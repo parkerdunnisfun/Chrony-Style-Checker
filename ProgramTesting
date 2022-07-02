@@ -1,0 +1,129 @@
+import unittest
+from Program import convert
+
+class January(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 32, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "01/" + day + "/2022"
+            self.assertEqual(convert(date), "Jan. " + str(i) + ", 2022", "Should be: Jan. " + str(i) + ", 2022")
+
+class February(unittest.TestCase):
+    
+    def test_days(self):
+        # non-leap
+        for i in range(1, 28, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "02/" + day + "/2022"
+            self.assertEqual(convert(date), "Feb. " + str(i) + ", 2022", "Should be: Feb. " + str(i) + ", 2022")
+        # leap
+        date = "02/29/2020"
+        self.assertEqual(convert(date), "Feb. 29, 2020", "Should be: Feb. 29, 2020")
+
+class March(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 32, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "03/" + day + "/2022"
+            self.assertEqual(convert(date), "March " + str(i) + ", 2022", "Should be: March " + str(i) + ", 2022")
+
+class April(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 31, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "04/" + day + "/2022"
+            self.assertEqual(convert(date), "April " + str(i) + ", 2022", "Should be: April " + str(i) + ", 2022")
+
+class May(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 32, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "05/" + day + "/2022"
+            self.assertEqual(convert(date), "May " + str(i) + ", 2022", "Should be: May " + str(i) + ", 2022")
+
+class June(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 31, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "06/" + day + "/2022"
+            self.assertEqual(convert(date), "June " + str(i) + ", 2022", "Should be: June " + str(i) + ", 2022")
+
+class July(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 32, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "07/" + day + "/2022"
+            self.assertEqual(convert(date), "July " + str(i) + ", 2022", "Should be: July " + str(i) + ", 2022")
+
+class August(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 32, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "08/" + day + "/2022"
+            self.assertEqual(convert(date), "Aug. " + str(i) + ", 2022", "Should be: Aug. " + str(i) + ", 2022")
+
+class September(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 31, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "09/" + day + "/2022"
+            self.assertEqual(convert(date), "Sept. " + str(i) + ", 2022", "Should be: Sept. " + str(i) + ", 2022")
+
+class October(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 32, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "10/" + day + "/2022"
+            self.assertEqual(convert(date), "Oct. " + str(i) + ", 2022", "Should be: Oct. " + str(i) + ", 2022")
+
+class November(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 31, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "11/" + day + "/2022"
+            self.assertEqual(convert(date), "Nov. " + str(i) + ", 2022", "Should be: Nov. " + str(i) + ", 2022")
+
+class December(unittest.TestCase):
+    
+    def test_days(self):
+        for i in range(1, 32, 1):
+            day = str(i)
+            if len(day) == 1:
+                day = "0" + day
+            date = "12/" + day + "/2022"
+            self.assertEqual(convert(date), "Dec. " + str(i) + ", 2022", "Should be: Dec. " + str(i) + ", 2022")
+
+if __name__ == '__main__':
+    unittest.main()
