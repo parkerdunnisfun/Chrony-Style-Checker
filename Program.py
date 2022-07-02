@@ -1,6 +1,7 @@
 from calendar import isleap
 from curses.ascii import isdigit
 
+# Month abbreviations per AP style
 months = {
         "01": "Jan.",
         "02": "Feb.",
@@ -16,8 +17,15 @@ months = {
         "12": "Dec.",
     }
 
-def isValidDate(date):    
-    # does date follow requested format?
+def is_valid_date(date):
+    """Lets us know whether or not a given date is valid based on criteria detailed in comments below.
+    
+    :param date: The date to be evaluated
+    :type date: str
+    :returns: an indication of whether or not a date is valid
+    :rtype: bool
+    """
+    # does date follow requested format (mm/dd/yyyy)?
     if len(date) == 10:
         for idx, x in enumerate(date):
             if idx != 2 and idx != 5:
@@ -27,7 +35,7 @@ def isValidDate(date):
                 return False
     else: return False
 
-    # dose date respect no-zero rule?
+    # does date respect no-zero rule (e.g. can't have 00/dd/yyyy or mm/00/yyyy)?
     if int(date[0:2]) == 0 or int(date[3:5]) == 0 or int(date[6:]) == 0:
         return False
 
@@ -59,8 +67,15 @@ def isValidDate(date):
     return True
 
 def convert(date):
+    """Converts a valid date into its AP-style-adhering counterpart
     
-    if not isValidDate(date):
+    :param date: The date to be converted
+    :type date: str
+    :returns: date in AP style
+    :rtype: str
+    """
+    
+    if not is_valid_date(date):
         return "Error: invalid date"
 
     dateArray = date.split('/')
