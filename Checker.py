@@ -30,21 +30,31 @@ class MarkedUp:
 
         # any "the U" that comes before should be put into errors arrray; any after into good array
         first_u_of_u = instances_u_of_u[0]
-        bad = []
-        good = []
+        bad_u = []
+        good_u = []
         for x in instances_u:
             if x < first_u_of_u:
-                bad.append(x)
-            else: good.append(x)
+                bad_u.append(x)
+            else: good_u.append(x)
 
         # bad = instances_u[ : instances_u.index(first_u_of_u) - 1]
         # good = instances_u[instances_u.index(first_u_of_u) : ]
 
         # adding good and bad "University of Utah"
-        bad.append(instances_u_of_u[1:])
-        good.append(instances_u_of_u[0])
 
-        return good
+        bad_u_of_u = instances_u_of_u[1:]
+        good_u_of_u = instances_u_of_u[0]
+
+        # add bad to errors dict and good to good list, university of utah
+        for x in bad_u:
+            MarkedUp.errors[(x, x+4)] = "u"
+        for x in good_u:
+            MarkedUp.good[(x, x+4)] = "u"
+        for x in bad_u_of_u:
+            MarkedUp.errors[(x, x+17)] = "uofu"
+        MarkedUp.good[(good_u_of_u, good_u_of_u+17)] = "uofu"
+
+        return MarkedUp.errors
 
 def main():
     text = input("Insert text: ")
