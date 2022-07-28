@@ -5,15 +5,16 @@ class MarkedUp:
     errors = {}
     good = {}
     words = []
+    text = ""
 
-    def __init__(self, text):
-        self.text = text
-        words = text.split(" ")
+    def __init__(self, words):
+        MarkedUp.text = words
+        # words = text.split(" ")
 
-    def u_reference_check(text):
+    def u_reference_check(self):
         # where "University of Utah" and "the U" occur in text
-        instances_u_of_u = [m.start() for m in re.finditer("University of Utah", text, re.IGNORECASE)]
-        instances_u = [m.start() for m in re.finditer("the U", text, re.IGNORECASE)]
+        instances_u_of_u = [m.start() for m in re.finditer("University of Utah", MarkedUp.text, re.IGNORECASE)]
+        instances_u = [m.start() for m in re.finditer("the U", MarkedUp.text, re.IGNORECASE)]
         # remove intersection from instances_u
         to_remove = []
         for x in instances_u_of_u:
@@ -29,7 +30,7 @@ class MarkedUp:
         # instances_u.remove(intersection)
 
         # any "the U" that comes before should be put into errors arrray; any after into good array
-        first_u_of_u = instances_u_of_u[0]
+        first_u_of_u = instances_u_of_u[0] # TO-DO: check for cases where there is no u of u
         bad_u = []
         good_u = []
         for x in instances_u:
@@ -54,11 +55,11 @@ class MarkedUp:
             MarkedUp.errors[(x, x+17)] = "uofu"
         MarkedUp.good[(good_u_of_u, good_u_of_u+17)] = "uofu"
 
-        return MarkedUp.errors
+        # return MarkedUp.errors
 
-def main():
-    text = input("Insert text: ")
-    print(MarkedUp.u_reference_check(text))
+# def main():
+#     text = input("Insert text: ")
+#     print(MarkedUp.u_reference_check(text))
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
