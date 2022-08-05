@@ -16,8 +16,6 @@ lbl = Label(root, text = "Insert text below to catch Chrony style errors")
 lbl.grid()
  
 # adding Entry Field
-# txt = Entry(root, width=50)
-# txt.grid(column =0, row =1)
 text_box = Text(
     root,
     height=50,
@@ -25,13 +23,11 @@ text_box = Text(
     wrap=WORD
 )
 text_box.grid(column=0, row=1)
- 
- 
-# function to display user text when
-# button is clicked
+
+# function to display user text when button is clicked
 def clicked():
- 
     mu =  MarkedUp(str(text_box.get("1.0", "end")).strip())
+    mu.clear()
     mu.u_reference_check()
     for x in mu.errors:
         start = "1." + str(x[0])
@@ -47,10 +43,6 @@ def clicked():
         text_box.tag_add("highlightgreen", start, end)
         text_box.tag_config("highlightgreen", background="#90EE90",
                  foreground="black")
-
- 
-    # res = "You wrote" + text_box.get()
-    # lbl.configure(text = res)
  
 # button widget with red color text inside
 btn = Button(root, text = "Check" ,

@@ -4,12 +4,16 @@ class MarkedUp:
 
     errors = {}
     good = {}
-    words = []
     text = ""
+    click_count = 0
 
     def __init__(self, words):
         MarkedUp.text = words
         # words = text.split(" ")
+
+    def clear(self):
+        self.errors.clear()
+        self.good.clear()
 
     def u_reference_check(self):
         # where "University of Utah" and "the U" occur in text
@@ -48,12 +52,12 @@ class MarkedUp:
 
         # add bad to errors dict and good to good list, university of utah
         for x in bad_u:
-            MarkedUp.errors[(x, x+4)] = "u"
+            self.errors[(x, x+4)] = "u"
         for x in good_u:
-            MarkedUp.good[(x, x+4)] = "u"
+            self.good[(x, x+4)] = "u"
         for x in bad_u_of_u:
-            MarkedUp.errors[(x, x+17)] = "uofu"
-        MarkedUp.good[(good_u_of_u, good_u_of_u+17)] = "uofu"
+            self.errors[(x, x+17)] = "uofu"
+        self.good[(good_u_of_u, good_u_of_u+17)] = "uofu"
 
         # return MarkedUp.errors
 
