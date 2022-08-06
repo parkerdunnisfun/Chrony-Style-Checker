@@ -1,3 +1,4 @@
+from cgitb import text
 import re
 
 class MarkedUp:
@@ -34,7 +35,10 @@ class MarkedUp:
         # instances_u.remove(intersection)
 
         # any "the U" that comes before should be put into errors arrray; any after into good array
-        first_u_of_u = instances_u_of_u[0] # TO-DO: check for cases where there is no u of u
+        if not instances_u_of_u:
+            first_u_of_u = len(self.text)
+        else: 
+            first_u_of_u = instances_u_of_u[0] # TO-DO: check for cases where there is no u of u
         bad_u = []
         good_u = []
         for x in instances_u:
@@ -46,9 +50,12 @@ class MarkedUp:
         # good = instances_u[instances_u.index(first_u_of_u) : ]
 
         # adding good and bad "University of Utah"
-
-        bad_u_of_u = instances_u_of_u[1:]
-        good_u_of_u = instances_u_of_u[0]
+        if not not instances_u_of_u:
+            bad_u_of_u = instances_u_of_u[1:]
+            good_u_of_u = instances_u_of_u[0]
+        else:
+            bad_u_of_u = []
+            good_u_of_u = -1
 
         # add bad to errors dict and good to good list, university of utah
         for x in bad_u:
@@ -57,7 +64,8 @@ class MarkedUp:
             self.good[(x, x+4)] = "u"
         for x in bad_u_of_u:
             self.errors[(x, x+17)] = "uofu"
-        self.good[(good_u_of_u, good_u_of_u+17)] = "uofu"
+        if good_u_of_u != -1:
+            self.good[(good_u_of_u, good_u_of_u+17)] = "uofu"
 
         # return MarkedUp.errors
 

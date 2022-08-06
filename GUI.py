@@ -26,6 +26,9 @@ text_box.grid(column=0, row=1)
 
 # function to display user text when button is clicked
 def clicked():
+    # DELETE: looking at tags
+    for tag in text_box.tag_names():
+        text_box.tag_remove(tag, "1.0", "end")
     mu =  MarkedUp(str(text_box.get("1.0", "end")).strip())
     mu.clear()
     mu.u_reference_check()
