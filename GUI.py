@@ -32,6 +32,7 @@ def clicked():
     mu =  MarkedUp(str(text_box.get("1.0", "end")).strip())
     mu.clear()
     mu.u_reference_check()
+    mu.oxford_comma_check()
     for x in mu.errors:
         start = "1." + str(x[0])
         end = "1." + str(x[1]+1)
@@ -45,6 +46,13 @@ def clicked():
 
         text_box.tag_add("highlightgreen", start, end)
         text_box.tag_config("highlightgreen", background="#90EE90",
+                 foreground="black")
+    for x in mu.warnings:
+        start = "1." + str(x[0])
+        end = "1." + str(x[1]+1)
+
+        text_box.tag_add("highlightyellow", start, end)
+        text_box.tag_config("highlightyellow", background="#FFFF00",
                  foreground="black")
  
 # button widget with red color text inside

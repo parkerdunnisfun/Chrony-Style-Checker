@@ -5,8 +5,8 @@ class MarkedUp:
 
     errors = {}
     good = {}
+    warnings = {}
     text = ""
-    click_count = 0
 
     def __init__(self, words):
         MarkedUp.text = words
@@ -15,6 +15,7 @@ class MarkedUp:
     def clear(self):
         self.errors.clear()
         self.good.clear()
+        self.warnings.clear()
 
     def u_reference_check(self):
         # where "University of Utah" and "the U" occur in text
@@ -67,7 +68,14 @@ class MarkedUp:
         if good_u_of_u != -1:
             self.good[(good_u_of_u, good_u_of_u+17)] = "uofu"
 
-        # return MarkedUp.errors
+    def oxford_comma_check(self):
+        oxcommas_and = [m.start() for m in re.finditer(", and ", MarkedUp.text, re.IGNORECASE)]
+        oxcommas_or = [m.start() for m in re.finditer(", or ", MarkedUp.text, re.IGNORECASE)]
+
+        for x in oxcommas_and:
+            self.warnings[(x, x)] = "oxc"
+        for x in oxcommas_or:
+            self.warnings[(x, x)] = "oxc"
 
 # def main():
 #     text = input("Insert text: ")
