@@ -82,9 +82,9 @@ def convert(date):
 
     return months[dateArray[0]] + " " + dateArray[1].lstrip('0') + ", " + dateArray[2].lstrip('0')
 
-def main():
-    date = input("Type a date in mm/dd/yyyy format: ")
-    print(convert(date))
+# def main():
+#     date = input("Type a date in mm/dd/yyyy format: ")
+#     print(convert(date))
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
