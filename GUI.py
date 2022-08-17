@@ -1,4 +1,5 @@
 # Import Module
+from ast import Delete
 from tkinter import *
 
 from Checker import MarkedUp
@@ -39,7 +40,12 @@ converter_text_box.grid(column=1, row=2, sticky=N)
 def checker_clicked():
     for tag in checker_text_box.tag_names():
         checker_text_box.tag_remove(tag, "1.0", "end")
-    mu =  MarkedUp(str(checker_text_box.get("1.0", "end")).strip())
+    # get \n positions
+    clean_text = str(checker_text_box.get("1.0", "end"))
+    checker_text_box.delete("1.0", "end")
+    clean_text_final = clean_text.replace("\n", " ")
+    checker_text_box.insert("1.0", clean_text_final)
+    mu =  MarkedUp(clean_text_final)
     mu.clear()
     mu.u_reference_check()
     mu.oxford_comma_check()
