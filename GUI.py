@@ -14,7 +14,7 @@ root.title("Chrony Style Converter")
 root.geometry('1000x700')
  
 # adding a label to the root window
-checker_lbl = Label(root, text = "Insert text below to catch Chrony style errors\nGreen = Good\nRed = Bad\nYellow = Oxford Comma")
+checker_lbl = Label(root, text = "Insert text below to catch Chrony style errors\nGreen = Good\nRed = Bad")
 checker_lbl.grid()
 converter_lbl = Label(root, text = "Convert date to Chrony style below (mm/dd/yyyy)")
 converter_lbl.grid(column=1, row=0, padx=30)
@@ -48,7 +48,7 @@ def checker_clicked():
     mu =  MarkedUp(clean_text_final)
     mu.clear()
     mu.u_reference_check()
-    mu.oxford_comma_check()
+    # mu.oxford_comma_check()
     for x in mu.errors:
         start = "1." + str(x[0])
         end = "1." + str(x[1]+1)

@@ -68,14 +68,14 @@ class MarkedUp:
         if good_u_of_u != -1:
             self.good[(good_u_of_u, good_u_of_u+17)] = "uofu"
 
-    def oxford_comma_check(self):
-        oxcommas_and = [m.start() for m in re.finditer(", and ", MarkedUp.text, re.IGNORECASE)]
-        oxcommas_or = [m.start() for m in re.finditer(", or ", MarkedUp.text, re.IGNORECASE)]
+    # def oxford_comma_check(self):
+    #     oxcommas_and = [m.start() for m in re.finditer(", and ", MarkedUp.text, re.IGNORECASE)]
+    #     oxcommas_or = [m.start() for m in re.finditer(", or ", MarkedUp.text, re.IGNORECASE)]
 
-        for x in oxcommas_and:
-            self.warnings[(x, x)] = "oxc"
-        for x in oxcommas_or:
-            self.warnings[(x, x)] = "oxc"
+    #     for x in oxcommas_and:
+    #         self.warnings[(x, x)] = "oxc"
+    #     for x in oxcommas_or:
+    #         self.warnings[(x, x)] = "oxc"
 
 # def main():
 #     text = input("Insert text: ")
