@@ -11,7 +11,7 @@ root.geometry('1000x700')
  
 checker_lbl = Label(root, text = "Insert text below to catch Chrony style errors\nGreen = Good\nRed = Bad")
 checker_lbl.grid()
-converter_lbl = Label(root, text = "Convert date to Chrony style below (mm/dd/yyyy)")
+converter_lbl = Label(root, text = "Convert date to Chrony style below (mm/dd/yyyy)\ne.g. 01/22/1979")
 converter_lbl.grid(column=1, row=0, padx=30)
 
 # University of Utah rule textbox
